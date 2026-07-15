@@ -12,7 +12,8 @@ interface Project {
   githubUrl: string;
   liveUrl: string;
   bgGradient: string;
-  uiMockup: React.ReactNode;
+  imageUrl?: string;
+  uiMockup?: React.ReactNode;
 }
 
 const getProjectsList = (): Project[] => [
@@ -24,6 +25,7 @@ const getProjectsList = (): Project[] => [
     githubUrl: 'https://github.com/abdurakhmanov0101/brain_IT',
     liveUrl: 'https://github.com/abdurakhmanov0101/brain_IT',
     bgGradient: 'from-violet-600 to-indigo-900',
+    imageUrl: '/projects/brain_it.png',
     uiMockup: (
       <svg className="w-full h-full opacity-80" viewBox="0 0 100 60">
         <rect x="5" y="5" width="20" height="50" rx="3" fill="rgba(255,255,255,0.1)" />
@@ -44,6 +46,7 @@ const getProjectsList = (): Project[] => [
     githubUrl: 'https://github.com/abdurakhmanov0101/pharmacy',
     liveUrl: 'https://github.com/abdurakhmanov0101/pharmacy',
     bgGradient: 'from-blue-600 to-cyan-900',
+    imageUrl: '/projects/pharmacy.png',
     uiMockup: (
       <svg className="w-full h-full opacity-80" viewBox="0 0 100 60">
         <rect x="5" y="5" width="90" height="50" rx="4" fill="rgba(255,255,255,0.05)" />
@@ -62,6 +65,7 @@ const getProjectsList = (): Project[] => [
     githubUrl: 'https://github.com/abdurakhmanov0101/portfolio',
     liveUrl: 'https://abdurakhmanov0101.github.io/portfolio',
     bgGradient: 'from-amber-600 to-orange-950',
+    imageUrl: '/projects/portfolio.png',
     uiMockup: (
       <svg className="w-full h-full opacity-80" viewBox="0 0 100 60">
         <rect x="5" y="5" width="90" height="12" rx="2" fill="rgba(255,255,255,0.1)" />
@@ -103,6 +107,7 @@ export const Portfolio: React.FC = () => {
                 githubUrl: r.html_url,
                 liveUrl: r.homepage || r.html_url,
                 bgGradient: gradients[idx % gradients.length],
+                imageUrl: `https://opengraph.githubassets.com/1/abdurakhmanov0101/${r.name}`,
                 uiMockup: (
                   <svg className="w-full h-full opacity-80" viewBox="0 0 100 60">
                     <rect x="10" y="10" width="80" height="40" rx="4" fill="rgba(255,255,255,0.08)" />
@@ -194,12 +199,23 @@ export const Portfolio: React.FC = () => {
                 className="group glass-card rounded-2xl border-white/5 overflow-hidden flex flex-col h-full hover:border-primary/30 transition-all duration-300"
               >
                 {/* Mockup Preview */}
-                <div className={`relative h-48 bg-gradient-to-br ${project.bgGradient} flex items-center justify-center p-8 overflow-hidden`}>
-                  <div className="w-full h-full bg-slate-950/40 rounded-xl border border-white/10 p-3 flex items-center justify-center group-hover:scale-105 group-hover:rotate-1 transition-transform duration-500 shadow-xl">
-                    {project.uiMockup}
-                  </div>
+                <div className={`relative h-48 sm:h-52 bg-gradient-to-br ${project.bgGradient} flex items-center justify-center overflow-hidden ${project.imageUrl ? 'p-2 sm:p-3' : 'p-6 sm:p-8'}`}>
+                  {project.imageUrl ? (
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      className="w-full h-full object-cover rounded-xl shadow-2xl border border-white/10 group-hover:scale-105 transition-all duration-500"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLElement).style.display = 'none';
+                      }}
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-slate-950/40 rounded-xl border border-white/10 p-3 flex items-center justify-center group-hover:scale-105 group-hover:rotate-1 transition-transform duration-500 shadow-xl">
+                      {project.uiMockup}
+                    </div>
+                  )}
                   
-                  <div className="absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                  <div className="absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10">
                     <a
                       href={project.githubUrl}
                       className="p-3.5 bg-slate-900 rounded-full border border-white/10 hover:border-primary text-white hover:text-primary transition-colors shadow-lg cursor-pointer"
