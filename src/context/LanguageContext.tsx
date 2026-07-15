@@ -235,7 +235,7 @@ const translations: Record<Language, any> = {
   uz: {
     nav: {
       home: 'Bosh sahifa',
-      about: 'Men haqimda',
+      about: 'Haqimda',
       skills: 'Ko\'nikmalar',
       services: 'Xizmatlar',
       portfolio: 'Loyihalar',
