@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from '../context/LanguageContext';
 
@@ -23,20 +23,6 @@ const educationList: EducationItem[] = [
     period: '2023',
     degreeKey: 'education.list.edu2.degree',
     detailsKey: 'education.list.edu2.details',
-    category: 'Certificate',
-  },
-  {
-    institution: 'Microsoft Certified Training',
-    period: '2022',
-    degreeKey: 'education.list.edu3.degree',
-    detailsKey: 'education.list.edu3.details',
-    category: 'Workshop',
-  },
-  {
-    institution: 'Google Professional Certification Program',
-    period: '2022',
-    degreeKey: 'education.list.edu4.degree',
-    detailsKey: 'education.list.edu4.details',
     category: 'Certificate',
   },
 ];
