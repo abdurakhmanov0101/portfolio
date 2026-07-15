@@ -29,10 +29,10 @@ const App: React.FC = () => {
   });
 
   useEffect(() => {
-    // Initialize Lenis for Smooth Scrolling
     const lenis = new Lenis({
       autoRaf: true,
     });
+    void lenis;
 
 
     // Sync class list with darkMode state
