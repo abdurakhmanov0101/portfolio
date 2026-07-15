@@ -1,12 +1,13 @@
-﻿import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
 import { useTranslation } from '../context/LanguageContext';
 
 interface Project {
   title: string;
-  descKey: string;
-  category: 'React' | 'JavaScript' | 'HTML/CSS' | 'Landing Pages';
+  descKey?: string;
+  customDesc?: string;
+  category: string;
   tags: string[];
   githubUrl: string;
   liveUrl: string;
@@ -16,12 +17,12 @@ interface Project {
 
 const getProjectsList = (): Project[] => [
   {
-    title: 'EduAcademy - Online Learning Platform',
+    title: 'brain_IT - IT Academy Dashboard',
     descKey: 'portfolio.desc1',
-    category: 'React',
-    tags: ['React', 'TypeScript', 'Tailwind', 'Context API'],
-    githubUrl: '#',
-    liveUrl: '#',
+    category: 'TypeScript',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'REST API'],
+    githubUrl: 'https://github.com/abdurakhmanov0101/brain_IT',
+    liveUrl: 'https://github.com/abdurakhmanov0101/brain_IT',
     bgGradient: 'from-violet-600 to-indigo-900',
     uiMockup: (
       <svg className="w-full h-full opacity-80" viewBox="0 0 100 60">
@@ -36,12 +37,12 @@ const getProjectsList = (): Project[] => [
     ),
   },
   {
-    title: 'FinTrack - Personal Wealth Dashboard',
+    title: 'pharmacy - Medical Inventory System',
     descKey: 'portfolio.desc2',
-    category: 'React',
-    tags: ['React', 'Chart.js', 'Tailwind CSS', 'Redux'],
-    githubUrl: '#',
-    liveUrl: '#',
+    category: 'TypeScript',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Management', 'UI/UX'],
+    githubUrl: 'https://github.com/abdurakhmanov0101/pharmacy',
+    liveUrl: 'https://github.com/abdurakhmanov0101/pharmacy',
     bgGradient: 'from-blue-600 to-cyan-900',
     uiMockup: (
       <svg className="w-full h-full opacity-80" viewBox="0 0 100 60">
@@ -54,12 +55,12 @@ const getProjectsList = (): Project[] => [
     ),
   },
   {
-    title: 'CryptoPulse - Live Asset Tracker',
+    title: 'portfolio - Personal Glassmorphism UI',
     descKey: 'portfolio.desc3',
-    category: 'JavaScript',
-    tags: ['JavaScript', 'REST API', 'CSS Grid', 'ChartJS'],
-    githubUrl: '#',
-    liveUrl: '#',
+    category: 'TypeScript',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Lenis'],
+    githubUrl: 'https://github.com/abdurakhmanov0101/portfolio',
+    liveUrl: 'https://abdurakhmanov0101.github.io/portfolio',
     bgGradient: 'from-amber-600 to-orange-950',
     uiMockup: (
       <svg className="w-full h-full opacity-80" viewBox="0 0 100 60">
@@ -73,80 +74,61 @@ const getProjectsList = (): Project[] => [
       </svg>
     ),
   },
-  {
-    title: 'Quantum Agency - Business Landing Page',
-    descKey: 'portfolio.desc4',
-    category: 'Landing Pages',
-    tags: ['HTML5', 'CSS3', 'Tailwind', 'AOS Library'],
-    githubUrl: '#',
-    liveUrl: '#',
-    bgGradient: 'from-fuchsia-600 to-pink-900',
-    uiMockup: (
-      <svg className="w-full h-full opacity-80" viewBox="0 0 100 60">
-        <rect x="5" y="5" width="90" height="50" rx="3" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-        <circle cx="50" cy="20" r="8" fill="rgba(255,255,255,0.15)" />
-        <line x1="30" y1="35" x2="70" y2="35" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
-        <line x1="40" y1="42" x2="60" y2="42" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5" strokeLinecap="round" />
-        <rect x="42" y="48" width="16" height="5" rx="1.5" fill="#06B6D4" />
-      </svg>
-    ),
-  },
-  {
-    title: 'TypingSpeedTest - Literacy Web Application',
-    descKey: 'portfolio.desc5',
-    category: 'JavaScript',
-    tags: ['JavaScript', 'HTML5', 'Custom CSS', 'Session Storage'],
-    githubUrl: '#',
-    liveUrl: '#',
-    bgGradient: 'from-emerald-600 to-teal-900',
-    uiMockup: (
-      <svg className="w-full h-full opacity-80" viewBox="0 0 100 60">
-        <rect x="10" y="10" width="80" height="20" rx="2" fill="rgba(255,255,255,0.06)" />
-        <line x1="15" y1="16" x2="60" y2="16" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" />
-        <line x1="15" y1="23" x2="80" y2="23" stroke="#22C55E" strokeWidth="1.5" />
-        <rect x="10" y="38" width="22" height="15" rx="2" fill="rgba(255,255,255,0.1)" />
-        <rect x="39" y="38" width="22" height="15" rx="2" fill="rgba(255,255,255,0.1)" />
-        <rect x="68" y="38" width="22" height="15" rx="2" fill="rgba(255,255,255,0.1)" />
-      </svg>
-    ),
-  },
-  {
-    title: 'FlexLayout - CSS Interactive Playground',
-    descKey: 'portfolio.desc6',
-    category: 'HTML/CSS',
-    tags: ['HTML5', 'CSS3 Flexbox', 'Vanilla JavaScript'],
-    githubUrl: '#',
-    liveUrl: '#',
-    bgGradient: 'from-rose-600 to-red-950',
-    uiMockup: (
-      <svg className="w-full h-full opacity-80" viewBox="0 0 100 60">
-        <rect x="5" y="5" width="25" height="50" rx="2" fill="rgba(255,255,255,0.05)" />
-        <rect x="35" y="5" width="60" height="50" rx="2" fill="rgba(255,255,255,0.08)" />
-        <rect x="40" y="10" width="12" height="12" rx="1.5" fill="#3B82F6" />
-        <rect x="56" y="10" width="12" height="12" rx="1.5" fill="#8B5CF6" />
-        <rect x="72" y="10" width="12" height="12" rx="1.5" fill="#06B6D4" />
-      </svg>
-    ),
-  },
 ];
 
 export const Portfolio: React.FC = () => {
   const { t } = useTranslation();
-  const [filter, setFilter] = useState<'All' | 'React' | 'JavaScript' | 'HTML/CSS' | 'Landing Pages'>('All');
+  const [filter, setFilter] = useState<string>('All');
+  const [dynamicProjects, setDynamicProjects] = useState<Project[]>([]);
 
-  const projectsList = getProjectsList();
+  useEffect(() => {
+    fetch('https://api.github.com/users/abdurakhmanov0101/repos?sort=updated')
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) {
+          const existingNames = ['brain_IT', 'pharmacy', 'portfolio', 'abdurakhmanov0101'];
+          const newProjects: Project[] = data
+            .filter((r) => !existingNames.includes(r.name) && !r.fork)
+            .map((r, idx) => {
+              const gradients = [
+                'from-emerald-600 to-teal-900',
+                'from-rose-600 to-red-950',
+                'from-fuchsia-600 to-pink-900',
+              ];
+              return {
+                title: r.name,
+                customDesc: r.description || 'Open source repository hosted on GitHub.',
+                category: r.language || 'Other',
+                tags: [r.language || 'Code', 'GitHub'],
+                githubUrl: r.html_url,
+                liveUrl: r.homepage || r.html_url,
+                bgGradient: gradients[idx % gradients.length],
+                uiMockup: (
+                  <svg className="w-full h-full opacity-80" viewBox="0 0 100 60">
+                    <rect x="10" y="10" width="80" height="40" rx="4" fill="rgba(255,255,255,0.08)" />
+                    <line x1="20" y1="25" x2="60" y2="25" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                    <line x1="20" y1="35" x2="70" y2="35" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                ),
+              };
+            });
+          if (newProjects.length > 0) {
+            setDynamicProjects(newProjects);
+          }
+        }
+      })
+      .catch(() => {
+        // Ignore API errors
+      });
+  }, []);
+
+  const projectsList = [...getProjectsList(), ...dynamicProjects];
 
   const filteredProjects = projectsList.filter(
     (p) => filter === 'All' || p.category === filter
   );
 
-  const categories: Array<'All' | 'React' | 'JavaScript' | 'HTML/CSS' | 'Landing Pages'> = [
-    'All',
-    'React',
-    'JavaScript',
-    'HTML/CSS',
-    'Landing Pages',
-  ];
+  const categories = ['All', ...Array.from(new Set(projectsList.map((p) => p.category)))];
 
   return (
     <section id="portfolio" className="relative py-16 bg-white dark:bg-darkBg">
@@ -245,7 +227,7 @@ export const Portfolio: React.FC = () => {
                       {project.title}
                     </h3>
                     <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed">
-                      {t(project.descKey)}
+                      {project.descKey ? t(project.descKey) : project.customDesc}
                     </p>
                   </div>
 
