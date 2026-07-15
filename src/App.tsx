@@ -17,7 +17,6 @@ import { Portfolio } from './sections/Portfolio';
 import { Experience } from './sections/Experience';
 import { Education } from './sections/Education';
 import { Testimonials } from './sections/Testimonials';
-import { Blog } from './sections/Blog';
 import { Contact } from './sections/Contact';
 import { Footer } from './sections/Footer';
 
@@ -81,7 +80,6 @@ const App: React.FC = () => {
             <Experience />
             <Education />
             <Testimonials />
-            <Blog />
             <Contact />
           </main>
 

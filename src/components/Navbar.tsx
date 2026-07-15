@@ -15,7 +15,6 @@ const navLinks = [
   { key: 'services', href: '#services' },
   { key: 'portfolio', href: '#portfolio' },
   { key: 'experience', href: '#experience' },
-  { key: 'blog', href: '#blog' },
   { key: 'contact', href: '#contact' },
 ];
 
@@ -48,7 +47,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
         setScrollProgress((window.scrollY / totalScroll) * 100);
       }
 
-      const sections = ['home', 'about', 'skills', 'services', 'portfolio', 'experience', 'blog', 'contact'];
+      const sections = ['home', 'about', 'skills', 'services', 'portfolio', 'experience', 'contact'];
       const scrollPos = window.scrollY + 250;
 
       for (const section of sections) {
