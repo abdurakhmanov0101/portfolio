@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from '../context/LanguageContext';
 
@@ -28,15 +28,15 @@ const toolsSkills: Skill[] = [
   { nameKey: 'Chrome DevTools', defaultName: 'Chrome DevTools', level: 88 },
 ];
 
-const literacySkills = (t: any): Skill[] => [
+const literacySkills = (t: any, language?: string): Skill[] => [
   { nameKey: 'Word', defaultName: t('services.list.s8.title').split(' ')[0] + ' Word', level: 95 },
   { nameKey: 'Excel', defaultName: t('services.list.s8.title').split(' ')[0] + ' Excel', level: 90 },
   { nameKey: 'PowerPoint', defaultName: t('services.list.s8.title').split(' ')[0] + ' PowerPoint', level: 95 },
   { nameKey: 'Workspace', defaultName: 'Google Workspace / Email', level: 92 },
   { nameKey: 'Windows', defaultName: 'Windows OS & Security', level: 88 },
-  { nameKey: 'Typing', defaultName: t('about.stats.experience') === 'Yillik tajriba' ? 'Yozish tezligi (65+ WPM)' : t('about.stats.experience') === 'Р›РµС‚ РѕРїС‹С‚Р°' ? 'РЎРєРѕСЂРѕСЃС‚СЊ РїРµС‡Р°С‚Рё (65+ WPM)' : 'Keyboard Typing Speed (65+ WPM)', level: 90 },
+  { nameKey: 'Typing', defaultName: language === 'uz' ? 'Yozish tezligi (65+ WPM)' : language === 'ru' ? 'Скорость печати (65+ WPM)' : 'Keyboard Typing Speed (65+ WPM)', level: 90 },
   { nameKey: 'Cybersecurity', defaultName: t('education.list.edu4.degree').split(' & ')[0], level: 82 },
-  { nameKey: 'Internet', defaultName: t('about.stats.experience') === 'Yillik tajriba' ? 'Internet va qidiruv tizimlari' : t('about.stats.experience') === 'Р›РµС‚ РѕРїС‹С‚Р°' ? 'РџРѕРёСЃРє РІ РРЅС‚РµСЂРЅРµС‚Рµ' : 'Internet Navigation & Research', level: 96 },
+  { nameKey: 'Internet', defaultName: language === 'uz' ? 'Internet va qidiruv tizimlari' : language === 'ru' ? 'Поиск в Интернете' : 'Internet Navigation & Research', level: 96 },
 ];
 
 interface CircularProgressProps {
@@ -110,7 +110,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ name, level }) => {
 };
 
 export const Skills: React.FC = () => {
-  const { t } = useTranslation();
+  const { language, t } = useTranslation();
   const [activeTab, setActiveTab] = useState<'frontend' | 'tools' | 'literacy'>('frontend');
 
   const tabs = [
@@ -119,7 +119,7 @@ export const Skills: React.FC = () => {
     { id: 'literacy', name: t('skills.tabs.literacy') },
   ];
 
-  const computerSkills = literacySkills(t);
+  const computerSkills = literacySkills(t, language);
 
   return (
     <section id="skills" className="relative py-16 bg-white dark:bg-darkBg">

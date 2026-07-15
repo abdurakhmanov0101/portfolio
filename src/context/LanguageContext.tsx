@@ -129,6 +129,14 @@ const translations: Record<Language, any> = {
       title: 'Work',
       titleAccent: 'Experience',
       list: {
+        exp0: {
+          period: '2025 - Present',
+          role: 'Software Engineer / Developer',
+          desc: 'Developing modern web applications, academy management dashboards, and high-performance interactive interfaces at Brain IT Company.',
+          b1: 'Building modern, fast-loading user interfaces using React, TypeScript, and Tailwind CSS',
+          b2: 'Developed interactive learning portals and dashboards for students and instructors',
+          b3: 'Responsible for REST API integrations, state management, and overall frontend performance optimization',
+        },
         exp1: {
           role: 'Strong Junior Developer',
           desc: 'Developed responsive web interfaces and integrated backend APIs at Linko.uz.',
@@ -344,6 +352,14 @@ const translations: Record<Language, any> = {
       title: 'Ish',
       titleAccent: 'Tajribasi',
       list: {
+        exp0: {
+          period: '2025 - Hozirgi vaqtgacha',
+          role: 'Software Engineer / Dasturchi',
+          desc: 'Brain IT Company kompaniyasida zamonaviy veb-ilovalar, o\'quv markazi platformalari va interfeyslarni ishlab chiqish.',
+          b1: 'React, TypeScript va Tailwind CSS yordamida zamonaviy, tez yuklanuvchi interfeyslarni ishlab chiqmoqdaman',
+          b2: 'O\'quvchilar hamda o\'qituvchilar uchun interaktiv ta\'lim platformasi va panellarni yaratdim',
+          b3: 'REST API integratsiyasi va unumdorlikni optimallashtirish bo\'yicha mas\'uliyatni o\'z zimmamga olganman',
+        },
         exp1: {
           role: 'Strong Junior Dasturchi',
           desc: 'Linko.uz kompaniyasida moslashuvchan veb-interfeyslar va backend API-larni ishlab chiqish.',
@@ -559,6 +575,14 @@ const translations: Record<Language, any> = {
       title: 'Опыт',
       titleAccent: 'Работы',
       list: {
+        exp0: {
+          period: '2025 - Наст. время',
+          role: 'Software Engineer / Разработчик',
+          desc: 'Разработка современных веб-приложений, систем управления учебным центром и интерактивных интерфейсов в Brain IT Company.',
+          b1: 'Разработка современных и быстрых пользовательских интерфейсов с использованием React, TypeScript и Tailwind CSS',
+          b2: 'Создание интерактивной образовательной платформы и кабинетов для студентов и преподавателей',
+          b3: 'Ответственность за интеграцию REST API, управление состоянием и оптимизацию производительности',
+        },
         exp1: {
           role: 'Strong Junior Разработчик',
           desc: 'Разработка адаптивных веб-интерфейсов и интеграция серверных API в Linko.uz.',

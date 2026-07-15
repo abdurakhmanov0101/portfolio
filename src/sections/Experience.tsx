@@ -1,10 +1,12 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import { FiCheckCircle } from 'react-icons/fi';
 import { useTranslation } from '../context/LanguageContext';
 
 interface ExperienceItem {
   company: string;
   period: string;
+  periodKey?: string;
   roleKey: string;
   descKey: string;
   b1Key: string;
@@ -13,6 +15,16 @@ interface ExperienceItem {
 }
 
 const experienceList: ExperienceItem[] = [
+  {
+    company: 'Brain IT Company',
+    period: '2025 - Present',
+    periodKey: 'experience.list.exp0.period',
+    roleKey: 'experience.list.exp0.role',
+    descKey: 'experience.list.exp0.desc',
+    b1Key: 'experience.list.exp0.b1',
+    b2Key: 'experience.list.exp0.b2',
+    b3Key: 'experience.list.exp0.b3',
+  },
   {
     company: 'Linko.uz',
     period: '2024 - 2025',
@@ -93,23 +105,23 @@ export const Experience: React.FC = () => {
                     className="w-full md:w-[45%] glass-card p-6 sm:p-8 rounded-2xl border-white/5 relative"
                   >
                     <span className="text-xs font-mono font-bold text-accent mb-2 block">
-                      {exp.period}
+                      {exp.periodKey ? t(exp.periodKey) : exp.period}
                     </span>
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">{t(exp.roleKey)}</h3>
                     <h4 className="text-sm font-semibold text-primary mb-4">{exp.company}</h4>
                     <p className="text-slate-650 dark:text-slate-400 text-sm leading-relaxed mb-4">{t(exp.descKey)}</p>
                     
-                    <ul className="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                    <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
                       <li className="flex items-start">
-                        <span className="text-primary mr-2 font-bold">вЂў</span>
+                        <FiCheckCircle className="w-4 h-4 text-primary mr-2.5 shrink-0 mt-0.5" />
                         <span>{t(exp.b1Key)}</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-primary mr-2 font-bold">вЂў</span>
+                        <FiCheckCircle className="w-4 h-4 text-primary mr-2.5 shrink-0 mt-0.5" />
                         <span>{t(exp.b2Key)}</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-primary mr-2 font-bold">вЂў</span>
+                        <FiCheckCircle className="w-4 h-4 text-primary mr-2.5 shrink-0 mt-0.5" />
                         <span>{t(exp.b3Key)}</span>
                       </li>
                     </ul>

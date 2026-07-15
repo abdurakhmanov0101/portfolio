@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight, FiStar } from 'react-icons/fi';
 import { useTranslation } from '../context/LanguageContext';
@@ -48,7 +48,7 @@ const testimonialsList: Testimonial[] = [
 ];
 
 export const Testimonials: React.FC = () => {
-  const { t } = useTranslation();
+  const { language, t } = useTranslation();
   const [index, setIndex] = useState(0);
 
   const nextSlide = () => {
@@ -62,27 +62,27 @@ export const Testimonials: React.FC = () => {
   const current = testimonialsList[index];
 
   const getTranslatedType = (type: string) => {
-    if (t('about.stats.experience') === 'Yillik tajriba') {
-      return type === 'Student' ? 'O\'quvchi' : 'Mijoz';
+    if (language === 'uz') {
+      return type === 'Student' ? "O'quvchi" : 'Mijoz';
     }
-    if (t('about.stats.experience') === 'Р›РµС‚ РѕРїС‹С‚Р°') {
-      return type === 'Student' ? 'РЎС‚СѓРґРµРЅС‚' : 'РљР»РёРµРЅС‚';
+    if (language === 'ru') {
+      return type === 'Student' ? 'Студент' : 'Клиент';
     }
     return type;
   };
 
   const getTranslatedRole = (name: string, type: string) => {
     if (name === 'Shaxzod Tursunov') {
-      return t('about.stats.experience') === 'Yillik tajriba' ? 'Ofis administratori' : t('about.stats.experience') === 'Р›РµС‚ РѕРїС‹С‚Р°' ? 'РћС„РёСЃ-Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ' : 'Office Administrator';
+      return language === 'uz' ? 'Ofis administratori' : language === 'ru' ? 'Офис-администратор' : 'Office Administrator';
     }
     if (name === 'Elena Rostova') {
-      return t('about.stats.experience') === 'Yillik tajriba' ? 'Kreativ agentlik direktori' : t('about.stats.experience') === 'Р›РµС‚ РѕРїС‹С‚Р°' ? 'Р”РёСЂРµРєС‚РѕСЂ РєСЂРµР°С‚РёРІРЅРѕРіРѕ Р°РіРµРЅС‚СЃС‚РІР°' : 'Creative Agency Director';
+      return language === 'uz' ? 'Kreativ agentlik direktori' : language === 'ru' ? 'Директор креативного агентства' : 'Creative Agency Director';
     }
     if (name === 'Dildora Alieva') {
-      return t('about.stats.experience') === 'Yillik tajriba' ? 'Universitet talabasi' : t('about.stats.experience') === 'Р›РµС‚ РѕРїС‹С‚Р°' ? 'РЎС‚СѓРґРµРЅС‚РєР° СѓРЅРёРІРµСЂСЃРёС‚РµС‚Р°' : 'University Student';
+      return language === 'uz' ? 'Universitet talabasi' : language === 'ru' ? 'Студентка университета' : 'University Student';
     }
     if (name === 'Jasur Umarov') {
-      return t('about.stats.experience') === 'Yillik tajriba' ? 'E-commerce do\'kon egasi' : t('about.stats.experience') === 'Р›РµС‚ РѕРїС‹С‚Р°' ? 'Р’Р»Р°РґРµР»РµС† РёРЅС‚РµСЂРЅРµС‚-РјР°РіР°Р·РёРЅР°' : 'E-commerce Business Owner';
+      return language === 'uz' ? "E-commerce do'kon egasi" : language === 'ru' ? 'Владелец интернет-магазина' : 'E-commerce Business Owner';
     }
     return type;
   };
@@ -132,7 +132,7 @@ export const Testimonials: React.FC = () => {
                 className="w-full glass-card p-8 md:p-12 rounded-3xl border-white/5 relative flex flex-col justify-between"
               >
                 <span className="absolute -top-12 -left-2 text-[120px] font-serif text-slate-800 pointer-events-none select-none opacity-40">
-                  вЂњ
+                  “
                 </span>
 
                 <div className="space-y-6">
@@ -153,8 +153,8 @@ export const Testimonials: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-slate-900 dark:text-white text-sm md:text-base">{current.name}</h3>
-                    <p className="text-xs text-slate-505 dark:text-slate-400">
-                      {getTranslatedRole(current.name, current.roleKey)} вЂў <span className="text-accent">{getTranslatedType(current.type)}</span>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      {getTranslatedRole(current.name, current.roleKey)} • <span className="text-accent">{getTranslatedType(current.type)}</span>
                     </p>
                   </div>
                 </div>

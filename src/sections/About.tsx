@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FiCheck } from 'react-icons/fi';
 import { useTranslation } from '../context/LanguageContext';
 
 export const About: React.FC = () => {
@@ -93,28 +94,36 @@ export const About: React.FC = () => {
             {/* Quality Badges */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
               <div className="flex items-start space-x-3">
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">вњ“</span>
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+                  <FiCheck className="w-3.5 h-3.5" />
+                </span>
                 <div>
                   <h4 className="text-sm font-bold text-slate-800 dark:text-white">{t('about.badges.b1_title')}</h4>
                   <p className="text-xs text-slate-500 dark:text-slate-500">{t('about.badges.b1_desc')}</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-bold text-sm">вњ“</span>
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-bold">
+                  <FiCheck className="w-3.5 h-3.5" />
+                </span>
                 <div>
                   <h4 className="text-sm font-bold text-slate-800 dark:text-white">{t('about.badges.b2_title')}</h4>
                   <p className="text-xs text-slate-500 dark:text-slate-500">{t('about.badges.b2_desc')}</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold text-sm">вњ“</span>
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">
+                  <FiCheck className="w-3.5 h-3.5" />
+                </span>
                 <div>
                   <h4 className="text-sm font-bold text-slate-800 dark:text-white">{t('about.badges.b3_title')}</h4>
                   <p className="text-xs text-slate-500 dark:text-slate-500">{t('about.badges.b3_desc')}</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold text-sm">вњ“</span>
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold">
+                  <FiCheck className="w-3.5 h-3.5" />
+                </span>
                 <div>
                   <h4 className="text-sm font-bold text-slate-800 dark:text-white">{t('about.badges.b4_title')}</h4>
                   <p className="text-xs text-slate-500 dark:text-slate-500">{t('about.badges.b4_desc')}</p>

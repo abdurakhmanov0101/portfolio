@@ -28,7 +28,7 @@ const educationList: EducationItem[] = [
 ];
 
 export const Education: React.FC = () => {
-  const { t } = useTranslation();
+  const { language, t } = useTranslation();
 
   return (
     <section id="education" className="relative py-16 bg-white dark:bg-darkBg">
@@ -75,10 +75,10 @@ export const Education: React.FC = () => {
                 <div className="flex justify-between items-start mb-4">
                   <span className="text-[10px] font-bold text-slate-400 font-mono bg-slate-800/80 px-2.5 py-1 rounded border border-slate-700/50 uppercase">
                     {edu.category === 'Degree' 
-                      ? (t('about.stats.experience') === 'Yillik tajriba' ? 'Daraja' : t('about.stats.experience') === 'Р›РµС‚ РѕРїС‹С‚Р°' ? 'РЎС‚РµРїРµРЅСЊ' : 'Degree')
+                      ? (language === 'uz' ? 'Daraja' : language === 'ru' ? 'Степень' : 'Degree')
                       : edu.category === 'Certificate'
-                      ? (t('about.stats.experience') === 'Yillik tajriba' ? 'Sertifikat' : t('about.stats.experience') === 'Р›РµС‚ РѕРїС‹С‚Р°' ? 'РЎРµСЂС‚РёС„РёРєР°С‚' : 'Certificate')
-                      : (t('about.stats.experience') === 'Yillik tajriba' ? 'Seminar' : t('about.stats.experience') === 'Р›РµС‚ РѕРїС‹С‚Р°' ? 'РЎРµРјРёРЅР°СЂ' : 'Workshop')
+                      ? (language === 'uz' ? 'Sertifikat' : language === 'ru' ? 'Сертификат' : 'Certificate')
+                      : (language === 'uz' ? 'Seminar' : language === 'ru' ? 'Семинар' : 'Workshop')
                     }
                   </span>
                   <span className="text-xs font-mono text-primary font-bold">

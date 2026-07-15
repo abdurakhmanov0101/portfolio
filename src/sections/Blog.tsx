@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { FiClock, FiCalendar, FiArrowRight } from 'react-icons/fi';
 import { useTranslation } from '../context/LanguageContext';
@@ -48,7 +48,7 @@ const blogPosts: BlogPost[] = [
 ];
 
 export const Blog: React.FC = () => {
-  const { t } = useTranslation();
+  const { language, t } = useTranslation();
 
   const getTranslatedCategory = (key: string) => {
     if (key === 'React' || key === 'JavaScript') return key;
@@ -56,29 +56,29 @@ export const Blog: React.FC = () => {
   };
 
   const getTranslatedDate = (date: string) => {
-    if (t('about.stats.experience') === 'Yillik tajriba') {
+    if (language === 'uz') {
       return date
         .replace('July', 'Iyul')
         .replace('June', 'Iyun')
         .replace('May', 'May')
         .replace('April', 'Aprel');
     }
-    if (t('about.stats.experience') === 'Р›РµС‚ РѕРїС‹С‚Р°') {
+    if (language === 'ru') {
       return date
-        .replace('July', 'РСЋР»СЏ')
-        .replace('June', 'РСЋРЅСЏ')
-        .replace('May', 'РњР°СЏ')
-        .replace('April', 'РђРїСЂРµР»СЏ');
+        .replace('July', 'Июля')
+        .replace('June', 'Июня')
+        .replace('May', 'Мая')
+        .replace('April', 'Апреля');
     }
     return date;
   };
 
   const getTranslatedReadTime = (time: string) => {
-    if (t('about.stats.experience') === 'Yillik tajriba') {
-      return time.replace('min read', 'daqiqa o\'qish');
+    if (language === 'uz') {
+      return time.replace('min read', "daqiqa o'qish");
     }
-    if (t('about.stats.experience') === 'Р›РµС‚ РѕРїС‹С‚Р°') {
-      return time.replace('min read', 'РјРёРЅ С‡С‚РµРЅРёСЏ');
+    if (language === 'ru') {
+      return time.replace('min read', 'мин чтения');
     }
     return time;
   };
