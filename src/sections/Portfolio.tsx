@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
 import { useTranslation } from '../context/LanguageContext';
 
@@ -217,21 +217,17 @@ export const Portfolio: React.FC = () => {
           ))}
         </div>
 
-        {/* Projects Cards Grid */}
-        <motion.div
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <motion.div
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4 }}
-                key={project.title}
-                className="group glass-card rounded-2xl border-white/5 overflow-hidden flex flex-col h-full hover:border-primary/30 transition-all duration-300"
+        {/* Projects Carousel */}
+        <div className="relative overflow-hidden flex w-full group py-4">
+          <motion.div
+            className="flex gap-8 w-max"
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{ ease: 'linear', duration: 25, repeat: Infinity }}
+          >
+            {[...filteredProjects, ...filteredProjects].map((project, idx) => (
+              <div
+                key={`${project.title}-${idx}`}
+                className="w-[300px] sm:w-[380px] lg:w-[420px] flex-shrink-0 glass-card rounded-2xl border-white/5 overflow-hidden flex flex-col hover:border-primary/30 transition-all duration-300"
               >
                 {/* Mockup Preview */}
                 <div className={`relative h-48 sm:h-52 bg-gradient-to-br ${project.bgGradient} flex items-center justify-center overflow-hidden ${project.imageUrl ? 'p-2 sm:p-3' : 'p-6 sm:p-8'}`}>
@@ -239,52 +235,37 @@ export const Portfolio: React.FC = () => {
                     <img
                       src={project.imageUrl}
                       alt={project.title}
-                      className="w-full h-full object-cover rounded-xl shadow-2xl border border-white/10 group-hover:scale-105 transition-all duration-500"
+                      className="w-full h-full object-cover rounded-xl shadow-2xl border border-white/10 hover:scale-105 transition-all duration-500"
                       onError={(e) => {
                         (e.currentTarget as HTMLElement).style.display = 'none';
                       }}
                     />
                   ) : (
-                    <div className="w-full h-full bg-slate-950/40 rounded-xl border border-white/10 p-3 flex items-center justify-center group-hover:scale-105 group-hover:rotate-1 transition-transform duration-500 shadow-xl">
+                    <div className="w-full h-full bg-slate-950/40 rounded-xl border border-white/10 p-3 flex items-center justify-center hover:scale-105 hover:rotate-1 transition-transform duration-500 shadow-xl">
                       {project.uiMockup}
                     </div>
                   )}
-                  
-                  <div className="absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10">
-                    <a
-                      href={project.githubUrl}
-                      className="p-3.5 bg-slate-900 rounded-full border border-white/10 hover:border-primary text-white hover:text-primary transition-colors shadow-lg cursor-pointer"
-                      title="View GitHub Repository"
-                    >
-                      <FiGithub className="w-5 h-5" />
-                    </a>
-                    <a
-                      href={project.liveUrl}
-                      className="p-3.5 bg-slate-900 rounded-full border border-white/10 hover:border-accent text-white hover:text-accent transition-colors shadow-lg cursor-pointer"
-                      title="View Live Demo"
-                    >
-                      <FiExternalLink className="w-5 h-5" />
-                    </a>
-                  </div>
+                  {/* Overlay Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80" />
                 </div>
 
-                {/* Body Details */}
-                <div className="p-6 flex-grow flex flex-col justify-between">
-                  <div className="space-y-3">
-                    <span className="text-[10px] font-bold text-accent uppercase tracking-wider font-mono">
+                {/* Content */}
+                <div className="p-6 sm:p-8 flex flex-col flex-grow relative bg-slate-900/50">
+                  <div className="space-y-3 flex-grow">
+                    <span className="inline-block px-2.5 py-1 rounded bg-primary/10 text-primary border border-primary/20 text-xs font-semibold tracking-wider uppercase">
                       {project.category}
                     </span>
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white hover:text-primary transition-colors whitespace-normal line-clamp-1">
                       {project.title}
                     </h3>
-                    <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed">
+                    <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed whitespace-normal line-clamp-2">
                       {project.descKey ? t(project.descKey) : project.customDesc}
                     </p>
                   </div>
 
                   {/* Technology Tags */}
                   <div className="flex flex-wrap gap-2 pt-6">
-                    {project.tags.map((tag: string) => (
+                    {project.tags.slice(0, 3).map((tag: string) => (
                       <span
                         key={tag}
                         className="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/30 text-[10px] font-mono text-slate-600 dark:text-slate-300"
@@ -292,12 +273,42 @@ export const Portfolio: React.FC = () => {
                         {tag}
                       </span>
                     ))}
+                    {project.tags.length > 3 && (
+                      <span className="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/30 text-[10px] font-mono text-slate-600 dark:text-slate-300">
+                        +{project.tags.length - 3}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex items-center gap-4 mt-8 pt-6 border-t border-slate-200 dark:border-white/10">
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
+                    >
+                      <FiGithub className="w-4 h-4" />
+                      Code
+                    </a>
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors ml-auto"
+                    >
+                      Live Demo
+                      <FiExternalLink className="w-4 h-4" />
+                    </a>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </AnimatePresence>
-        </motion.div>
+          </motion.div>
+          {/* Left/Right Fade Edges */}
+          <div className="absolute top-0 left-0 h-full w-24 sm:w-32 bg-gradient-to-r from-white dark:from-darkBg to-transparent pointer-events-none z-10" />
+          <div className="absolute top-0 right-0 h-full w-24 sm:w-32 bg-gradient-to-l from-white dark:from-darkBg to-transparent pointer-events-none z-10" />
+        </div>
 
       </div>
     </section>
