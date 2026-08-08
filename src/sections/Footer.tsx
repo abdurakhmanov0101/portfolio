@@ -35,27 +35,23 @@ export const Footer: React.FC = React.memo(() => {
               className="group shrink-0 relative flex items-center justify-center w-12 h-12"
               aria-label="Home"
             >
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary via-secondary to-accent rounded-xl blur-[10px] opacity-40 group-hover:opacity-80 group-hover:blur-[14px] transition-all duration-500" />
-              <div className="relative w-full h-full bg-slate-900/90 rounded-xl border border-white/20 flex items-center justify-center shadow-xl backdrop-blur-xl group-hover:border-primary/50 transition-colors duration-500 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-tr from-cyan-400 via-blue-500 to-fuchsia-500 rounded-xl blur-[10px] opacity-40 group-hover:opacity-80 group-hover:blur-[14px] transition-all duration-500" />
+              <div className="relative w-full h-full bg-[#0B1120]/90 rounded-xl border border-white/10 flex items-center justify-center shadow-xl backdrop-blur-xl group-hover:border-white/20 transition-all duration-500 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-50" />
-                <svg viewBox="0 0 48 48" fill="none" stroke="url(#footer-ab-grad)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 group-hover:scale-110 transition-transform duration-500 drop-shadow-lg relative z-10">
-                  {/* Central Shared Vertical Stem */}
-                  <path d="M24 8 L24 40" />
-                  {/* A Left Leg */}
-                  <path d="M24 8 L10 40" />
-                  {/* A Crossbar */}
-                  <path d="M16 26 L24 26" />
-                  {/* B Top Loop */}
-                  <path d="M24 8 C 35 8, 35 24, 24 24" />
-                  {/* B Bottom Loop */}
-                  <path d="M24 24 C 37 24, 37 40, 24 40" />
+                <svg viewBox="0 0 100 100" fill="none" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 group-hover:scale-110 transition-transform duration-500 relative z-10">
                   <defs>
-                    <linearGradient id="footer-ab-grad" x1="10" y1="8" x2="38" y2="40" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#06b6d4" />
-                      <stop offset="0.5" stopColor="#8b5cf6" />
-                      <stop offset="1" stopColor="#10b981" />
+                    <linearGradient id="footer-bespoke-grad" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#00f2fe" />
+                      <stop offset="0.5" stopColor="#4facfe" />
+                      <stop offset="1" stopColor="#f093fb" />
                     </linearGradient>
+                    <filter id="footer-glow-bespoke" x="-20%" y="-20%" width="140%" height="140%">
+                      <feGaussianBlur stdDeviation="3" result="blur" />
+                      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
                   </defs>
+                  <path d="M 27.5 50 L 62.5 50 C 85 50, 85 80, 57.5 80 L 37.5 20 L 62.5 20 C 80 20, 80 50, 62.5 50" stroke="url(#footer-bespoke-grad)" strokeWidth="8" filter="url(#footer-glow-bespoke)" />
+                  <path d="M 37.5 20 L 17.5 80" stroke="url(#footer-bespoke-grad)" strokeWidth="8" filter="url(#footer-glow-bespoke)" />
                 </svg>
               </div>
             </a>
