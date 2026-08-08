@@ -23,8 +23,8 @@ export default {
           light: '#34d399',
           dark: '#059669',
         },
-        darkBg: '#0B1120', // Deep Midnight Blue
-        lightBg: '#F8FAFC',
+        darkBg: '#050914', // Deep OLED Blue
+        lightBg: '#F6F8FA', // Pearl White
         darkCard: 'rgba(15, 23, 42, 0.4)', // Frosty dark
         lightCard: 'rgba(255, 255, 255, 0.7)',
         success: '#10b981',

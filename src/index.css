@@ -20,42 +20,44 @@
 
 /* Modern styling & Glassmorphism */
 .glass-nav {
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  background: rgba(11, 17, 32, 0.7);
+  background: rgba(5, 9, 20, 0.7);
 }
 
 .light .glass-nav {
-  border-bottom: 1px solid rgba(11, 17, 32, 0.05);
-  background: rgba(248, 250, 252, 0.7);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
 }
 
 .glass-card {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 10px 40px 0 rgba(0, 0, 0, 0.6);
+  background: linear-gradient(135deg, rgba(13, 20, 36, 0.6), rgba(11, 17, 32, 0.4));
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .light .glass-card {
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 10px 30px -15px rgba(15, 23, 42, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.7));
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 1), 0 10px 30px -10px rgba(6, 182, 212, 0.1), 0 20px 40px -20px rgba(139, 92, 246, 0.05);
 }
 
 .glass-card:hover {
-  border-color: rgba(6, 182, 212, 0.4);
-  box-shadow: 0 10px 40px -10px rgba(6, 182, 212, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  border-color: rgba(6, 182, 212, 0.3);
+  box-shadow: 0 15px 40px -10px rgba(6, 182, 212, 0.2), 0 20px 50px -15px rgba(139, 92, 246, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
   transform: translateY(-4px) scale(1.01);
 }
 
 .light .glass-card:hover {
-  border-color: rgba(6, 182, 212, 0.5);
-  box-shadow: 0 15px 35px -10px rgba(6, 182, 212, 0.15);
+  border-color: rgba(6, 182, 212, 0.3);
+  box-shadow: 0 15px 35px -10px rgba(6, 182, 212, 0.2), 0 25px 45px -15px rgba(139, 92, 246, 0.15);
   transform: translateY(-4px) scale(1.01);
 }
 
@@ -122,17 +124,17 @@
   filter: blur(120px);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.15;
+  opacity: 0.18;
   transition: opacity 0.5s ease;
 }
 
 .light .neon-glow-bg {
-  opacity: 0.08;
+  opacity: 0.12;
 }
 
 /* Grid overlay background */
 .grid-bg {
-  background-size: 40px 40px;
+  background-size: 50px 50px;
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
@@ -140,8 +142,8 @@
 
 .light .grid-bg {
   background-image: 
-    linear-gradient(to right, rgba(15, 23, 42, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.025) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
 }
 
 /* Typing animation cursor indicator */
