@@ -52,8 +52,8 @@ export const Footer: React.FC = React.memo(() => {
                   </svg>
                 </div>
               </div>
-              <span className="text-lg md:text-xl font-extrabold tracking-wide bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                Abduraxmanov Beksulton
+              <span className="text-xl font-extrabold tracking-widest bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                BEKSULTON
               </span>
             </a>
             <p className="text-slate-600 dark:text-slate-500 text-xs font-medium tracking-wide">

@@ -127,11 +127,8 @@ export const Navbar: React.FC<NavbarProps> = React.memo(({ darkMode, toggleDarkM
             </div>
             
             {/* Text Logo */}
-            <span className="text-base sm:text-lg xl:text-xl font-extrabold tracking-wide bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent group-hover:scale-[1.02] transition-transform hidden md:block">
-              Abduraxmanov Beksulton
-            </span>
-            <span className="text-base font-extrabold tracking-wide bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent group-hover:scale-[1.02] transition-transform hidden sm:block md:hidden">
-              A. Beksulton
+            <span className="text-xl xl:text-2xl font-extrabold tracking-widest bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent group-hover:scale-[1.02] transition-transform hidden sm:block">
+              BEKSULTON
             </span>
           </a>
 
