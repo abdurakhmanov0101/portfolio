@@ -101,7 +101,7 @@ const getProjectsList = (): Project[] => [
     category: 'TypeScript',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Education'],
     githubUrl: 'https://github.com/abdurakhmanov0101',
-    liveUrl: 'https://surxon-ilm-tafakkur.netlify.app',
+    liveUrl: 'https://surxon-ilmtafakkur.onrender.com',
     bgGradient: 'from-blue-700 to-indigo-950',
     imageUrl: '', // Will fall back to UI mockup if no image
     uiMockup: (
@@ -146,7 +146,7 @@ export const Portfolio: React.FC = () => {
                 category: r.language || 'Other',
                 tags: [r.language || 'Code', 'GitHub'],
                 githubUrl: r.html_url,
-                liveUrl: r.homepage || r.html_url, // Takes the live demo link straight from GitHub
+                liveUrl: r.name.toLowerCase().includes('surxon') ? 'https://surxon-ilmtafakkur.onrender.com' : (r.homepage || r.html_url),
                 bgGradient: gradients[idx % gradients.length],
                 imageUrl: `https://opengraph.githubassets.com/1/abdurakhmanov0101/${r.name}`,
                 uiMockup: (
