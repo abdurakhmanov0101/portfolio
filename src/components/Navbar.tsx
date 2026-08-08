@@ -178,6 +178,16 @@ export const Navbar: React.FC<NavbarProps> = React.memo(({ darkMode, toggleDarkM
               {darkMode ? <FiSun className="w-4 h-4 text-amber-400" /> : <FiMoon className="w-4 h-4 text-indigo-500" />}
             </button>
 
+            {/* CV Download */}
+            <a
+              href="/Beksulton_Abdurakhmanov_CV.pdf"
+              download
+              className="px-4 xl:px-5 py-2 rounded-full border border-primary/50 text-primary dark:text-primary-light hover:bg-primary/10 font-bold text-xs xl:text-sm tracking-wider uppercase hover:shadow-neon-blue hover:scale-[1.03] transition-all duration-300 flex items-center gap-2 whitespace-nowrap shrink-0"
+            >
+              <FiDownload className="w-3.5 h-3.5" />
+              {t('nav.downloadCV')}
+            </a>
+
             {/* CTA Hire Me */}
             <a
               href="#contact"
@@ -198,15 +208,6 @@ export const Navbar: React.FC<NavbarProps> = React.memo(({ darkMode, toggleDarkM
                 <FiGlobe className="w-3.5 h-3.5" />
                 <span>{getLanguageLabel(language)}</span>
               </button>
-
-              <a
-                href="/Beksulton_Abdurakhmanov_CV.pdf"
-                download
-                className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-xs shadow-neon-blue hover:shadow-neon-purple hover:scale-105 transition-all duration-300"
-              >
-                <FiDownload className="w-3.5 h-3.5" />
-                {t('nav.downloadCV')}
-              </a>
 
               <AnimatePresence>
                 {langMenuOpen && (
@@ -282,6 +283,22 @@ export const Navbar: React.FC<NavbarProps> = React.memo(({ darkMode, toggleDarkM
                   </motion.a>
                 );
               })}
+
+              {/* Mobile CV Download */}
+              <motion.a
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -10 }}
+                transition={{ duration: 0.2, delay: navLinks.length * 0.05 }}
+                href="/Beksulton_Abdurakhmanov_CV.pdf"
+                download
+                onClick={() => setIsOpen(false)}
+                className="mt-4 px-5 py-3.5 rounded-xl border border-primary/50 text-primary dark:text-primary-light font-bold text-sm tracking-widest uppercase flex items-center justify-center gap-2 shadow-neon-blue transition-all"
+              >
+                <FiDownload className="w-4 h-4" />
+                {t('nav.downloadCV')}
+              </motion.a>
+
               <a
                 href="#contact"
                 onClick={() => setIsOpen(false)}
