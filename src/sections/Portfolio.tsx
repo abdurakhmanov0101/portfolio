@@ -219,11 +219,7 @@ export const Portfolio: React.FC = () => {
 
         {/* Projects Carousel */}
         <div className="relative overflow-hidden flex w-full group py-4">
-          <motion.div
-            className="flex gap-8 w-max"
-            animate={{ x: ['0%', '-50%'] }}
-            transition={{ ease: 'linear', duration: 25, repeat: Infinity }}
-          >
+          <div className="flex gap-8 w-max animate-scroll-x group-hover:pause">
             {[...filteredProjects, ...filteredProjects].map((project, idx) => (
               <div
                 key={`${project.title}-${idx}`}
@@ -304,7 +300,7 @@ export const Portfolio: React.FC = () => {
                 </div>
               </div>
             ))}
-          </motion.div>
+          </div>
           {/* Left/Right Fade Edges */}
           <div className="absolute top-0 left-0 h-full w-24 sm:w-32 bg-gradient-to-r from-white dark:from-darkBg to-transparent pointer-events-none z-10" />
           <div className="absolute top-0 right-0 h-full w-24 sm:w-32 bg-gradient-to-l from-white dark:from-darkBg to-transparent pointer-events-none z-10" />

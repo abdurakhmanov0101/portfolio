@@ -174,3 +174,20 @@
     transform: none;
   }
 }
+
+/* Infinite Scroll Carousel */
+@keyframes scrollX {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll-x {
+  animation: scrollX 25s linear infinite;
+}
+
+.group:hover .group-hover\:pause {
+  animation-play-state: paused;
+}
+.hover\:pause:hover {
+  animation-play-state: paused;
+}
