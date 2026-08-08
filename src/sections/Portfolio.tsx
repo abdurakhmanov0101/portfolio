@@ -128,18 +128,25 @@ export const Portfolio: React.FC = () => {
       .then((data) => {
         if (Array.isArray(data)) {
           // Exclude profile repo and projects we already hardcoded
-          const existingNames = ['brain_IT', 'pharmacy', 'portfolio', 'abdurakhmanov0101', 'biology'];
+          // Only exclude the profile readme repository and forks
           const newProjects = data
-            .filter((r) => !existingNames.includes(r.name) && !r.fork)
-            .map((r, idx) => {
-              const gradients = ['from-emerald-600 to-teal-900', 'from-rose-600 to-red-950', 'from-fuchsia-600 to-pink-900'];
+            .filter((r: any) => r.name !== 'abdurakhmanov0101' && !r.fork)
+            .map((r: any, idx: number) => {
+              const gradients = [
+                'from-violet-600 to-indigo-900', 
+                'from-emerald-600 to-teal-900', 
+                'from-blue-600 to-cyan-900',
+                'from-rose-600 to-red-950', 
+                'from-fuchsia-600 to-pink-900',
+                'from-amber-600 to-orange-950'
+              ];
               return {
                 title: r.name,
                 customDesc: r.description || 'Open source repository hosted on GitHub.',
                 category: r.language || 'Other',
                 tags: [r.language || 'Code', 'GitHub'],
                 githubUrl: r.html_url,
-                liveUrl: r.homepage || r.html_url,
+                liveUrl: r.homepage || r.html_url, // Takes the live demo link straight from GitHub
                 bgGradient: gradients[idx % gradients.length],
                 imageUrl: `https://opengraph.githubassets.com/1/abdurakhmanov0101/${r.name}`,
                 uiMockup: (
@@ -157,12 +164,12 @@ export const Portfolio: React.FC = () => {
         }
       })
       .catch(() => {
-        // Silently fail and rely on static projects if API is rate-limited
+        // Silently fail and rely on static fallback if API is rate-limited
       });
   }, []);
 
-  // Merge static projects with dynamic ones from GitHub
-  const projectsList = [...getProjectsList(), ...dynamicProjects];
+  // Use the dynamic projects from GitHub profile. If none loaded (e.g. rate limit), use fallback list.
+  const projectsList = dynamicProjects.length > 0 ? dynamicProjects : getProjectsList();
 
   const filteredProjects = projectsList.filter(
     (p) => filter === 'All' || p.category === filter
