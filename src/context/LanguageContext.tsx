@@ -20,6 +20,7 @@ const translations: Record<Language, any> = {
       blog: 'Blog',
       contact: 'Contact',
       hireMe: 'Hire Me',
+      downloadCV: 'Download CV',
     },
     hero: {
       badge: 'Available for Hire & Projects',
@@ -243,6 +244,7 @@ const translations: Record<Language, any> = {
       blog: 'Blog',
       contact: 'Aloqa',
       hireMe: 'Hamkorlik',
+      downloadCV: 'CV yuklab olish',
     },
     hero: {
       badge: 'Hamkorlik uchun ochiqman',
@@ -466,6 +468,7 @@ const translations: Record<Language, any> = {
       blog: 'Блог',
       contact: 'Контакты',
       hireMe: 'Связаться',
+      downloadCV: 'Скачать CV',
     },
     hero: {
       badge: 'Доступен для предложений и проектов',

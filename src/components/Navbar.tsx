@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiSun, FiMoon, FiMenu, FiX, FiGlobe, FiChevronDown } from 'react-icons/fi';
+import { FiSun, FiMoon, FiMenu, FiX, FiGlobe, FiChevronDown, FiDownload } from 'react-icons/fi';
 import { useTranslation } from '../context/LanguageContext';
 
 interface NavbarProps {
@@ -198,6 +198,16 @@ export const Navbar: React.FC<NavbarProps> = React.memo(({ darkMode, toggleDarkM
                 <FiGlobe className="w-3.5 h-3.5" />
                 <span>{getLanguageLabel(language)}</span>
               </button>
+
+              <a
+                href="/Beksulton_Abdurakhmanov_CV.pdf"
+                download
+                className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-xs shadow-neon-blue hover:shadow-neon-purple hover:scale-105 transition-all duration-300"
+              >
+                <FiDownload className="w-3.5 h-3.5" />
+                {t('nav.downloadCV')}
+              </a>
+
               <AnimatePresence>
                 {langMenuOpen && (
                   <motion.div
