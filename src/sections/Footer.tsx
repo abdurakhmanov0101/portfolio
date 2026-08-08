@@ -39,13 +39,18 @@ export const Footer: React.FC = React.memo(() => {
               <div className="relative w-full h-full bg-slate-900/90 rounded-xl border border-white/20 flex items-center justify-center shadow-xl backdrop-blur-xl group-hover:border-primary/50 transition-colors duration-500 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-50" />
                 <svg viewBox="0 0 48 48" fill="none" stroke="url(#footer-ab-grad)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 group-hover:scale-110 transition-transform duration-500 drop-shadow-lg relative z-10">
-                  <path d="M24 10 L10 38" />
-                  <path d="M24 10 L38 38" />
-                  <path d="M16 28 L32 28" />
-                  <path d="M24 10 C 38 6, 40 20, 31 24" />
-                  <path d="M31 24 C 44 24, 44 42, 38 38" />
+                  {/* Central Shared Vertical Stem */}
+                  <path d="M24 8 L24 40" />
+                  {/* A Left Leg */}
+                  <path d="M24 8 L10 40" />
+                  {/* A Crossbar */}
+                  <path d="M16 26 L24 26" />
+                  {/* B Top Loop */}
+                  <path d="M24 8 C 35 8, 35 24, 24 24" />
+                  {/* B Bottom Loop */}
+                  <path d="M24 24 C 37 24, 37 40, 24 40" />
                   <defs>
-                    <linearGradient id="footer-ab-grad" x1="10" y1="10" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                    <linearGradient id="footer-ab-grad" x1="10" y1="8" x2="38" y2="40" gradientUnits="userSpaceOnUse">
                       <stop stopColor="#06b6d4" />
                       <stop offset="0.5" stopColor="#8b5cf6" />
                       <stop offset="1" stopColor="#10b981" />
