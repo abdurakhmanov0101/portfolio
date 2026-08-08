@@ -23,7 +23,7 @@ const getProjectsList = (): Project[] => [
     category: 'TypeScript',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'REST API'],
     githubUrl: 'https://github.com/abdurakhmanov0101/brain_IT',
-    liveUrl: 'https://github.com/abdurakhmanov0101/brain_IT',
+    liveUrl: 'https://brain-it.netlify.app',
     bgGradient: 'from-violet-600 to-indigo-900',
     imageUrl: '/projects/brain_it.png',
     uiMockup: (
@@ -44,7 +44,7 @@ const getProjectsList = (): Project[] => [
     category: 'TypeScript',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Management', 'UI/UX'],
     githubUrl: 'https://github.com/abdurakhmanov0101/pharmacy',
-    liveUrl: 'https://github.com/abdurakhmanov0101/pharmacy',
+    liveUrl: 'https://pharmacy-management.netlify.app',
     bgGradient: 'from-blue-600 to-cyan-900',
     imageUrl: '/projects/pharmacy.png',
     uiMockup: (
@@ -84,7 +84,7 @@ const getProjectsList = (): Project[] => [
     category: 'HTML',
     tags: ['HTML', 'CSS', 'JavaScript', 'Education'],
     githubUrl: 'https://github.com/abdurakhmanov0101/biology',
-    liveUrl: 'https://github.com/abdurakhmanov0101/biology',
+    liveUrl: 'https://biology-learning.netlify.app',
     bgGradient: 'from-emerald-600 to-teal-900',
     imageUrl: 'https://opengraph.githubassets.com/1/abdurakhmanov0101/biology',
     uiMockup: (
@@ -101,7 +101,7 @@ const getProjectsList = (): Project[] => [
     category: 'TypeScript',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Education'],
     githubUrl: 'https://github.com/abdurakhmanov0101',
-    liveUrl: 'https://github.com/abdurakhmanov0101',
+    liveUrl: 'https://surxon-ilm-tafakkur.netlify.app',
     bgGradient: 'from-blue-700 to-indigo-950',
     imageUrl: '', // Will fall back to UI mockup if no image
     uiMockup: (
