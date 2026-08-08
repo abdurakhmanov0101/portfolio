@@ -95,6 +95,23 @@ const getProjectsList = (): Project[] => [
       </svg>
     ),
   },
+  {
+    title: 'Surxon Ilm Tafakkur',
+    customDesc: 'Educational and Scientific Platform project. Comprehensive system for education and learning.',
+    category: 'TypeScript',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Education'],
+    githubUrl: 'https://github.com/abdurakhmanov0101',
+    liveUrl: 'https://github.com/abdurakhmanov0101',
+    bgGradient: 'from-blue-700 to-indigo-950',
+    imageUrl: '', // Will fall back to UI mockup if no image
+    uiMockup: (
+      <svg className="w-full h-full opacity-80" viewBox="0 0 100 60">
+        <circle cx="50" cy="30" r="20" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="2" />
+        <path d="M 40 35 L 50 20 L 60 35 Z" fill="#3B82F6" />
+        <line x1="35" y1="45" x2="65" y2="45" stroke="white" strokeWidth="3" strokeLinecap="round" />
+      </svg>
+    ),
+  },
 ];
 
 export const Portfolio: React.FC = () => {
