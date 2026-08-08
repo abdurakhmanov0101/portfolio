@@ -140,13 +140,24 @@ export const Portfolio: React.FC = () => {
                 'from-fuchsia-600 to-pink-900',
                 'from-amber-600 to-orange-950'
               ];
+              let liveLink = r.homepage;
+              if (!liveLink) {
+                const nameLower = r.name.toLowerCase();
+                if (nameLower.includes('surxon')) liveLink = 'https://surxon-ilmtafakkur.onrender.com';
+                else if (nameLower.includes('brain_it') || nameLower.includes('brain-it')) liveLink = 'https://brain-it.netlify.app';
+                else if (nameLower.includes('pharmacy')) liveLink = 'https://pharmacy-management.netlify.app';
+                else if (nameLower.includes('biology')) liveLink = 'https://biology-learning.netlify.app';
+                else if (nameLower.includes('portfolio')) liveLink = 'https://abdurakhmanov0101.github.io/portfolio';
+                else liveLink = `https://${nameLower.replace(/_/g, '-')}.netlify.app`;
+              }
+              
               return {
                 title: r.name,
                 customDesc: r.description || 'Open source repository hosted on GitHub.',
                 category: r.language || 'Other',
                 tags: [r.language || 'Code', 'GitHub'],
                 githubUrl: r.html_url,
-                liveUrl: r.name.toLowerCase().includes('surxon') ? 'https://surxon-ilmtafakkur.onrender.com' : (r.homepage || r.html_url),
+                liveUrl: liveLink,
                 bgGradient: gradients[idx % gradients.length],
                 imageUrl: `https://opengraph.githubassets.com/1/abdurakhmanov0101/${r.name}`,
                 uiMockup: (
