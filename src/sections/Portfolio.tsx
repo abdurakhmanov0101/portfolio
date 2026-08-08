@@ -117,8 +117,52 @@ const getProjectsList = (): Project[] => [
 export const Portfolio: React.FC = () => {
   const { t } = useTranslation();
   const [filter, setFilter] = useState<string>('All');
+  const [dynamicProjects, setDynamicProjects] = useState<any[]>([]);
 
-  const projectsList = getProjectsList();
+  React.useEffect(() => {
+    fetch('https://api.github.com/users/abdurakhmanov0101/repos?sort=updated')
+      .then((res) => {
+        if (!res.ok) throw new Error('API limit or error');
+        return res.json();
+      })
+      .then((data) => {
+        if (Array.isArray(data)) {
+          // Exclude profile repo and projects we already hardcoded
+          const existingNames = ['brain_IT', 'pharmacy', 'portfolio', 'abdurakhmanov0101', 'biology'];
+          const newProjects = data
+            .filter((r) => !existingNames.includes(r.name) && !r.fork)
+            .map((r, idx) => {
+              const gradients = ['from-emerald-600 to-teal-900', 'from-rose-600 to-red-950', 'from-fuchsia-600 to-pink-900'];
+              return {
+                title: r.name,
+                customDesc: r.description || 'Open source repository hosted on GitHub.',
+                category: r.language || 'Other',
+                tags: [r.language || 'Code', 'GitHub'],
+                githubUrl: r.html_url,
+                liveUrl: r.homepage || r.html_url,
+                bgGradient: gradients[idx % gradients.length],
+                imageUrl: `https://opengraph.githubassets.com/1/abdurakhmanov0101/${r.name}`,
+                uiMockup: (
+                  <svg className="w-full h-full opacity-80" viewBox="0 0 100 60">
+                    <rect x="10" y="10" width="80" height="40" rx="4" fill="rgba(255,255,255,0.08)" />
+                    <line x1="20" y1="25" x2="60" y2="25" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                    <line x1="20" y1="35" x2="70" y2="35" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                ),
+              };
+            });
+          if (newProjects.length > 0) {
+            setDynamicProjects(newProjects);
+          }
+        }
+      })
+      .catch(() => {
+        // Silently fail and rely on static projects if API is rate-limited
+      });
+  }, []);
+
+  // Merge static projects with dynamic ones from GitHub
+  const projectsList = [...getProjectsList(), ...dynamicProjects];
 
   const filteredProjects = projectsList.filter(
     (p) => filter === 'All' || p.category === filter
