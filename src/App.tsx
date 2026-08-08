@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
 
@@ -8,17 +8,24 @@ import { BackgroundParticles } from './components/BackgroundParticles';
 import { CursorGlow } from './components/CursorGlow';
 import { Navbar } from './components/Navbar';
 
-// Section imports
-import { Hero } from './sections/Hero';
-import { About } from './sections/About';
-import { Skills } from './sections/Skills';
-import { Services } from './sections/Services';
-import { Portfolio } from './sections/Portfolio';
-import { Experience } from './sections/Experience';
-import { Education } from './sections/Education';
-import { Testimonials } from './sections/Testimonials';
-import { Contact } from './sections/Contact';
-import { Footer } from './sections/Footer';
+// Lazy-loaded Section imports for Performance (Code Splitting)
+const Hero = lazy(() => import('./sections/Hero').then(module => ({ default: module.Hero })));
+const About = lazy(() => import('./sections/About').then(module => ({ default: module.About })));
+const Skills = lazy(() => import('./sections/Skills').then(module => ({ default: module.Skills })));
+const Services = lazy(() => import('./sections/Services').then(module => ({ default: module.Services })));
+const Portfolio = lazy(() => import('./sections/Portfolio').then(module => ({ default: module.Portfolio })));
+const Experience = lazy(() => import('./sections/Experience').then(module => ({ default: module.Experience })));
+const Education = lazy(() => import('./sections/Education').then(module => ({ default: module.Education })));
+const Testimonials = lazy(() => import('./sections/Testimonials').then(module => ({ default: module.Testimonials })));
+const Contact = lazy(() => import('./sections/Contact').then(module => ({ default: module.Contact })));
+const Footer = lazy(() => import('./sections/Footer').then(module => ({ default: module.Footer })));
+
+// Fallback loader for lazy chunks
+const SectionFallback = () => (
+  <div className="w-full h-32 flex items-center justify-center opacity-50">
+    <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin" />
+  </div>
+);
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +39,6 @@ const App: React.FC = () => {
       autoRaf: true,
     });
     void lenis;
-
 
     // Sync class list with darkMode state
     if (darkMode) {
@@ -60,31 +66,35 @@ const App: React.FC = () => {
       </AnimatePresence>
 
       {!isLoading && (
-        <div className="relative min-h-screen transition-colors duration-500 overflow-x-hidden">
+        <div className="relative min-h-screen transition-colors duration-500 overflow-x-hidden bg-darkBg text-white">
           {/* Ambient Background Canvas Particles */}
           <BackgroundParticles />
 
           {/* Interactive Mouse Follow Cursor Glow */}
           <CursorGlow />
 
-          {/* Floating Glass Navbar */}
+          {/* Floating Glass Navbar (Static for instant load) */}
           <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
-          {/* Page Sections */}
+          {/* Page Sections (Lazy Loaded) */}
           <main>
-            <Hero />
-            <About />
-            <Skills />
-            <Services />
-            <Portfolio />
-            <Experience />
-            <Education />
-            <Testimonials />
-            <Contact />
+            <Suspense fallback={<SectionFallback />}>
+              <Hero />
+              <About />
+              <Skills />
+              <Services />
+              <Portfolio />
+              <Experience />
+              <Education />
+              <Testimonials />
+              <Contact />
+            </Suspense>
           </main>
 
-          {/* Footer & Scroll-To-Top */}
-          <Footer />
+          {/* Footer & Scroll-To-Top (Lazy Loaded) */}
+          <Suspense fallback={<SectionFallback />}>
+            <Footer />
+          </Suspense>
         </div>
       )}
     </>

@@ -9,38 +9,41 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#059669',
-          light: '#34D399',
-          dark: '#047857',
+          DEFAULT: '#06b6d4', // Vibrant Cyan
+          light: '#67e8f9',
+          dark: '#0891b2',
         },
         secondary: {
-          DEFAULT: '#10B981',
-          light: '#6EE7B7',
-          dark: '#059669',
+          DEFAULT: '#8b5cf6', // Electric Violet
+          light: '#a78bfa',
+          dark: '#7c3aed',
         },
         accent: {
-          DEFAULT: '#F59E0B',
-          light: '#FBBF24',
-          dark: '#D97706',
+          DEFAULT: '#10b981', // Emerald Green
+          light: '#34d399',
+          dark: '#059669',
         },
-        darkBg: '#0F172A',
+        darkBg: '#0B1120', // Deep Midnight Blue
         lightBg: '#F8FAFC',
-        darkCard: 'rgba(255, 255, 255, 0.05)',
-        lightCard: 'rgba(0, 0, 0, 0.03)',
-        success: '#22C55E',
+        darkCard: 'rgba(15, 23, 42, 0.4)', // Frosty dark
+        lightCard: 'rgba(255, 255, 255, 0.7)',
+        success: '#10b981',
       },
       fontFamily: {
-        sans: ['Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+        sans: ['Outfit', 'Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       boxShadow: {
-        'glass-dark': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
-        'glass-light': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
-        'neon-blue': '0 0 20px rgba(5, 150, 105, 0.35)',
-        'neon-purple': '0 0 20px rgba(16, 185, 129, 0.35)',
-        'neon-cyan': '0 0 20px rgba(245, 158, 11, 0.35)',
+        'glass-dark': '0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255,255,255,0.05)',
+        'glass-light': '0 8px 32px 0 rgba(31, 38, 135, 0.07), inset 0 1px 1px rgba(255,255,255,0.4)',
+        'neon-blue': '0 0 25px rgba(6, 182, 212, 0.4)',
+        'neon-purple': '0 0 25px rgba(139, 92, 246, 0.4)',
+        'neon-cyan': '0 0 25px rgba(16, 185, 129, 0.4)',
       },
       backdropBlur: {
         xs: '2px',
+        md: '12px',
+        lg: '24px',
       },
       animation: {
         'float-slow': 'floatSlow 8s ease-in-out infinite',

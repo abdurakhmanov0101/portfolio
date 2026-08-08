@@ -1,7 +1,7 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiChevronUp, FiGithub, FiInstagram, FiLinkedin, FiSend } from 'react-icons/fi';
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC = React.memo(() => {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -95,4 +95,4 @@ export const Footer: React.FC = () => {
       )}
     </>
   );
-};
+});

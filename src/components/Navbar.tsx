@@ -18,7 +18,7 @@ const navLinks = [
   { key: 'contact', href: '#contact' },
 ];
 
-export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
+export const Navbar: React.FC<NavbarProps> = React.memo(({ darkMode, toggleDarkMode }) => {
   const { language, setLanguage, t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -82,9 +82,9 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isScrolled 
-            ? 'py-3.5 glass-nav shadow-lg' 
+            ? 'py-3.5 glass-nav shadow-[0_10px_30px_-10px_rgba(0,0,0,0.3)] border-b border-white/5' 
             : 'py-5 bg-transparent'
         }`}
       >
@@ -285,4 +285,4 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
       </header>
     </>
   );
-};
+});

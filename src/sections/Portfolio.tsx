@@ -284,7 +284,7 @@ export const Portfolio: React.FC = () => {
 
                   {/* Technology Tags */}
                   <div className="flex flex-wrap gap-2 pt-6">
-                    {project.tags.map((tag) => (
+                    {project.tags.map((tag: string) => (
                       <span
                         key={tag}
                         className="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/30 text-[10px] font-mono text-slate-600 dark:text-slate-300"

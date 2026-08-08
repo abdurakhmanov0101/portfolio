@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaReact, FaJs, FaHtml5, FaCss3Alt, FaGitAlt, FaTerminal } from 'react-icons/fa';
 import { useTranslation } from '../context/LanguageContext';
@@ -38,23 +38,23 @@ export const Hero: React.FC = () => {
         {/* Left Side Content */}
         <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: -30, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full glass-card border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider animate-pulse-glow"
           >
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-neon-blue" />
             <span>{t('hero.badge')}</span>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-none text-slate-900 dark:text-white animate-fade-in"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white"
           >
             {t('hero.greeting')}{' '}
-            <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary via-secondary to-secondary-light bg-clip-text text-transparent">
               {t('hero.title')}
             </span>
           </motion.h1>
@@ -69,9 +69,9 @@ export const Hero: React.FC = () => {
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed"
           >
             {t('hero.description')}
@@ -81,18 +81,18 @@ export const Hero: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-wrap gap-4 justify-center lg:justify-start pt-4"
           >
             <a
               href="#portfolio"
-              className="px-8 py-3.5 rounded-full bg-gradient-to-r from-primary via-secondary to-accent text-white font-semibold text-sm hover:shadow-neon-blue hover:scale-[1.03] transition-all duration-300 cursor-pointer"
+              className="px-8 py-3.5 rounded-full bg-gradient-to-r from-primary via-secondary to-primary-dark text-white font-semibold text-sm shadow-neon-blue hover:shadow-neon-purple hover:scale-[1.05] transition-all duration-400 cursor-pointer"
             >
               {t('hero.viewPortfolio')}
             </a>
             <a
               href="#contact"
-              className="px-8 py-3.5 rounded-full bg-transparent border border-slate-200 dark:border-white/10 hover:border-primary/50 text-slate-800 dark:text-white font-semibold text-sm glass-card hover:scale-[1.03] transition-all duration-300 cursor-pointer"
+              className="px-8 py-3.5 rounded-full bg-transparent border border-slate-200 dark:border-white/10 hover:border-primary/50 text-slate-800 dark:text-white font-semibold text-sm glass-card hover:scale-[1.05] transition-all duration-400 cursor-pointer"
             >
               {t('hero.contactMe')}
             </a>
