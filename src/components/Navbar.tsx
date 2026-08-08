@@ -100,36 +100,32 @@ export const Navbar: React.FC<NavbarProps> = React.memo(({ darkMode, toggleDarkM
           {/* Left: Logo */}
           <a
             href="#home"
-            className="flex items-center gap-3 group shrink-0"
+            className="group shrink-0 relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14"
+            aria-label="Home"
           >
-            {/* SVG Logo Icon */}
-            <div className="relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-xl blur-[10px] opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
-              <div className="relative w-full h-full bg-slate-900 rounded-xl border border-white/10 flex items-center justify-center shadow-xl">
-                <svg viewBox="0 0 40 40" fill="none" stroke="url(#ab-grad)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform duration-300">
-                  {/* A Left Leg */}
-                  <path d="M20 10 L10 30" />
-                  {/* A Right Leg (also B stem) */}
-                  <path d="M20 10 L30 30" />
-                  {/* A Crossbar */}
-                  <path d="M14 22 L26 22" />
-                  {/* B Loops */}
-                  <path d="M20 10 C 32 8, 34 18, 25 20 C 36 20, 38 32, 30 30" />
-                  <defs>
-                    <linearGradient id="ab-grad" x1="10" y1="10" x2="35" y2="30" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#06b6d4" />
-                      <stop offset="0.5" stopColor="#8b5cf6" />
-                      <stop offset="1" stopColor="#10b981" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-            </div>
+            {/* Background Glow */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary via-secondary to-accent rounded-xl blur-[12px] opacity-50 group-hover:opacity-100 group-hover:blur-[16px] transition-all duration-500" />
             
-            {/* Text Logo */}
-            <span className="text-xl xl:text-2xl font-extrabold tracking-widest bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent group-hover:scale-[1.02] transition-transform hidden sm:block">
-              BEKSULTON
-            </span>
+            {/* Glass Container */}
+            <div className="relative w-full h-full bg-slate-900/90 rounded-xl border border-white/20 flex items-center justify-center shadow-2xl backdrop-blur-xl group-hover:border-primary/50 transition-colors duration-500 overflow-hidden">
+              {/* Inner subtle glow */}
+              <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-50" />
+              
+              <svg viewBox="0 0 48 48" fill="none" stroke="url(#nav-ab-grad)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform duration-500 drop-shadow-lg relative z-10">
+                <path d="M24 10 L10 38" />
+                <path d="M24 10 L38 38" />
+                <path d="M16 28 L32 28" />
+                <path d="M24 10 C 38 6, 40 20, 31 24" />
+                <path d="M31 24 C 44 24, 44 42, 38 38" />
+                <defs>
+                  <linearGradient id="nav-ab-grad" x1="10" y1="10" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#06b6d4" />
+                    <stop offset="0.5" stopColor="#8b5cf6" />
+                    <stop offset="1" stopColor="#10b981" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
           </a>
 
           {/* Center: Desktop Nav Links (Centered & Larger) */}

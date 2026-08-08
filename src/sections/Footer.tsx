@@ -32,29 +32,27 @@ export const Footer: React.FC = React.memo(() => {
           <div className="text-center md:text-left space-y-2">
             <a
               href="#home"
-              className="inline-flex items-center gap-2 group"
+              className="group shrink-0 relative flex items-center justify-center w-12 h-12"
+              aria-label="Home"
             >
-              <div className="relative w-8 h-8 flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-lg blur-[8px] opacity-30 group-hover:opacity-70 transition-opacity duration-300" />
-                <div className="relative w-full h-full bg-slate-900 rounded-lg border border-white/10 flex items-center justify-center">
-                  <svg viewBox="0 0 40 40" fill="none" stroke="url(#footer-ab-grad)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 group-hover:scale-110 transition-transform duration-300">
-                    <path d="M20 10 L10 30" />
-                    <path d="M20 10 L30 30" />
-                    <path d="M14 22 L26 22" />
-                    <path d="M20 10 C 32 8, 34 18, 25 20 C 36 20, 38 32, 30 30" />
-                    <defs>
-                      <linearGradient id="footer-ab-grad" x1="10" y1="10" x2="35" y2="30" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#06b6d4" />
-                        <stop offset="0.5" stopColor="#8b5cf6" />
-                        <stop offset="1" stopColor="#10b981" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary via-secondary to-accent rounded-xl blur-[10px] opacity-40 group-hover:opacity-80 group-hover:blur-[14px] transition-all duration-500" />
+              <div className="relative w-full h-full bg-slate-900/90 rounded-xl border border-white/20 flex items-center justify-center shadow-xl backdrop-blur-xl group-hover:border-primary/50 transition-colors duration-500 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-50" />
+                <svg viewBox="0 0 48 48" fill="none" stroke="url(#footer-ab-grad)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 group-hover:scale-110 transition-transform duration-500 drop-shadow-lg relative z-10">
+                  <path d="M24 10 L10 38" />
+                  <path d="M24 10 L38 38" />
+                  <path d="M16 28 L32 28" />
+                  <path d="M24 10 C 38 6, 40 20, 31 24" />
+                  <path d="M31 24 C 44 24, 44 42, 38 38" />
+                  <defs>
+                    <linearGradient id="footer-ab-grad" x1="10" y1="10" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#06b6d4" />
+                      <stop offset="0.5" stopColor="#8b5cf6" />
+                      <stop offset="1" stopColor="#10b981" />
+                    </linearGradient>
+                  </defs>
+                </svg>
               </div>
-              <span className="text-xl font-extrabold tracking-widest bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                BEKSULTON
-              </span>
             </a>
             <p className="text-slate-600 dark:text-slate-500 text-xs font-medium tracking-wide">
               Front-End Developer & Computer Literacy Instructor
