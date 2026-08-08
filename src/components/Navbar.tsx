@@ -100,9 +100,39 @@ export const Navbar: React.FC<NavbarProps> = React.memo(({ darkMode, toggleDarkM
           {/* Left: Logo */}
           <a
             href="#home"
-            className="text-xl xl:text-2xl font-extrabold tracking-wider bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent hover:scale-105 transition-transform shrink-0"
+            className="flex items-center gap-3 group shrink-0"
           >
-            BEKSULTON
+            {/* SVG Logo Icon */}
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-xl blur-[10px] opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
+              <div className="relative w-full h-full bg-slate-900 rounded-xl border border-white/10 flex items-center justify-center shadow-xl">
+                <svg viewBox="0 0 40 40" fill="none" stroke="url(#ab-grad)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform duration-300">
+                  {/* A Left Leg */}
+                  <path d="M20 10 L10 30" />
+                  {/* A Right Leg (also B stem) */}
+                  <path d="M20 10 L30 30" />
+                  {/* A Crossbar */}
+                  <path d="M14 22 L26 22" />
+                  {/* B Loops */}
+                  <path d="M20 10 C 32 8, 34 18, 25 20 C 36 20, 38 32, 30 30" />
+                  <defs>
+                    <linearGradient id="ab-grad" x1="10" y1="10" x2="35" y2="30" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#06b6d4" />
+                      <stop offset="0.5" stopColor="#8b5cf6" />
+                      <stop offset="1" stopColor="#10b981" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+            
+            {/* Text Logo */}
+            <span className="text-base sm:text-lg xl:text-xl font-extrabold tracking-wide bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent group-hover:scale-[1.02] transition-transform hidden md:block">
+              Abduraxmanov Beksulton
+            </span>
+            <span className="text-base font-extrabold tracking-wide bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent group-hover:scale-[1.02] transition-transform hidden sm:block md:hidden">
+              A. Beksulton
+            </span>
           </a>
 
           {/* Center: Desktop Nav Links (Centered & Larger) */}
