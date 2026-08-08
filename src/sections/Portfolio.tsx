@@ -146,7 +146,7 @@ export const Portfolio: React.FC = () => {
                 if (nameLower.includes('surxon')) liveLink = 'https://surxon-ilmtafakkur.onrender.com';
                 else if (nameLower.includes('brain_it') || nameLower.includes('brain-it')) liveLink = 'https://brain-it.netlify.app';
                 else if (nameLower.includes('pharmacy')) liveLink = 'https://pharmacy-management.netlify.app';
-                else if (nameLower.includes('biology')) liveLink = 'https://biology-learning.netlify.app';
+                else if (nameLower.includes('biology')) liveLink = 'https://biology-backend-vw8k.onrender.com';
                 else if (nameLower.includes('portfolio')) liveLink = 'https://abdurakhmanov0101.github.io/portfolio';
                 else liveLink = `https://${nameLower.replace(/_/g, '-')}.netlify.app`;
               }
